@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineer & Data Scientist Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Fira+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #333333;
+      --secondary: #444444;
+      --charcoal: #2C3E50;
+      --black: #000000;
+      --white: #FFFFFF;
+      --bg-gradient: linear-gradient(135deg, #2BC0E4 0%, #EAECC6 100%);
+      --shadow: 0 8px 32px 0 rgba(0,0,0,0.12);
+      --tile-hover: #eaecc6;
+      --rgb-red: #ff3b3b;
+      --rgb-green: #00d97e;
+      --rgb-blue: #3b7bff;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-gradient);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--primary);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    header {
+      width: 100%;
+      background: var(--bg-gradient);
+      border-bottom: 2px solid var(--charcoal);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Fira Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .logo:active, .logo:focus, .logo:hover {
+      transform: scale(1.08) rotate(-3deg);
+      color: var(--charcoal);
+      filter: drop-shadow(0 0 8px #2C3E5088);
+    }
+    .diamond-logo {
+      width: 38px;
+      height: 38px;
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .diamond-logo:hover {
+      transform: scale(1.2) rotate(10deg);
+      filter: drop-shadow(0 0 8px #2C3E5088);
+    }
+    .nav-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 2rem;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+      position: relative;
+      cursor: pointer;
+    }
+    .nav-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--charcoal);
+      transition: width .3s;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    .nav-links a:hover, .nav-links a:focus {
+      color: var(--charcoal);
+    }
+    .nav-links a:hover:after, .nav-links a:focus:after {
+      width: 100%;
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--rgb-red), var(--rgb-green), var(--rgb-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      transition: color 0.2s;
+    }
+    .hero-title span {
+      background: linear-gradient(90deg, var(--rgb-blue), var(--rgb-green), var(--rgb-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      transition: color 0.2s;
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--secondary);
+      margin-bottom: 2.5rem;
+      letter-spacing: 1px;
+      animation: fadeInUp 1.2s cubic-bezier(.23,1.02,.64,.98);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(60px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .hero-anim {
+      width: 320px;
+      height: 320px;
+      margin: 0 auto 2rem auto;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1.5s cubic-bezier(.23,1.02,.64,.98);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .hero-anim:hover {
+      transform: scale(1.05) rotate(-2deg);
+      filter: drop-shadow(0 0 8px #fff8);
+    }
+    /* SVG Animation: 2D hand-drawn style */
+    .draw path {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      animation: drawAnim 2.5s forwards;
+      stroke: #fff;
+    }
+    @keyframes drawAnim {
+      to { stroke-dashoffset: 0; }
+    }
+    .draw circle {
+      filter: grayscale(1);
+    }
+    .btn-main {
+      background: var(--white);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      padding: 0.9rem 2.5rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 24px #fff2;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+      animation: fadeInUp 1.5s cubic-bezier(.23,1.02,.64,.98);
+    }
+    .btn-main:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 32px #fff8;
+      color: var(--white);
+      background: var(--primary);
+    }
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem 2rem;
+      animation: fadeInUp 1.2s cubic-bezier(.23,1.02,.64,.98);
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--rgb-red), var(--rgb-green), var(--rgb-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #2bc0e488;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.5rem;
+      justify-content: center;
+    }
+    .about-img {
+      flex: 0 0 220px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 4px 24px #fff2;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1.5s cubic-bezier(.23,1.02,.64,.98);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .about-img:hover {
+      transform: scale(1.08) rotate(2deg);
+      filter: drop-shadow(0 0 8px #fff8);
+    }
+    .about-img .diamond-logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto;
+      display: block;
+    }
+    .about-text {
+      flex: 1 1 320px;
+      font-size: 1.15rem;
+      color: var(--white);
+      line-height: 1.7;
+      background: var(--bg);
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 12px #fff2;
+      border: 1px solid var(--white);
+      color: var(--rgb-blue);
+      font-weight: 600;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .skill-badge {
+      background: var(--secondary);
+      color: var(--white);
+      border: 1px solid var(--charcoal);
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 0.5rem 1.3rem;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px #fff2;
+      margin-bottom: 0.5rem;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      cursor: pointer;
+      background: linear-gradient(90deg, var(--rgb-red) 0%, var(--rgb-green) 50%, var(--rgb-blue) 100%);
+      color: #fff;
+      border: none;
+    }
+    .skill-badge:hover {
+      background: linear-gradient(90deg, var(--rgb-blue), var(--rgb-green), var(--rgb-red));
+      color: #fff;
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 4px 16px #2bc0e488;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: var(--secondary);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #fff2;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.2s cubic-bezier(.23,1.02,.64,.98);
+      border: 1.5px solid var(--white);
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03) rotate(-2deg);
+      box-shadow: 0 8px 32px #fff8;
+      background: var(--tile-hover);
+    }
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--rgb-blue), var(--rgb-green), var(--rgb-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 0.7rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .project-desc {
+      color: var(--rgb-green);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+    .tag {
+      background: var(--secondary);
+      color: var(--rgb-red);
+      border-radius: 12px;
+      padding: 0.3rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #fff2;
+      border: 1px solid var(--charcoal);
+    }
+    .contact-form {
+      max-width: 480px;
+      margin: 2rem auto 0 auto;
+      background: var(--bg);
+      border-radius: 18px;
+      padding: 2rem 2rem 1.5rem 2rem;
+      box-shadow: 0 2px 12px #fff2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      animation: fadeInUp 1.2s cubic-bezier(.23,1.02,.64,.98);
+      border: 1px solid var(--white);
+    }
+    .contact-form input, .contact-form textarea {
+      border: 1px solid var(--charcoal);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--secondary);
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      background: var(--white);
+      color: var(--black);
+      outline: none;
+    }
+    .contact-form button {
+      background: linear-gradient(90deg, var(--rgb-red), var(--rgb-green), var(--rgb-blue));
+      color: #fff;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, var(--rgb-blue), var(--rgb-green), var(--rgb-red));
+      color: #fff;
+    }
+    footer {
+      color: var(--rgb-blue);
+      background: none;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-content { flex-direction: column; gap: 1.5rem;}
+      .about-img { margin-bottom: 0;}
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.1rem;}
+      .section-title { font-size: 1.3rem;}
+      .about-img { width: 140px; height: 140px;}
+      .about-text { padding: 1rem;}
+      .nav { flex-direction: column; gap: 1rem;}
+      .nav-links a { margin-left: 1rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo" tabindex="0" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+        <svg class="diamond-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank');event.stopPropagation();">
+          <polygon points="32,6 58,24 32,58 6,24" fill="#fff" stroke="#fff" stroke-width="3"/>
+          <polygon points="32,6 45,24 32,58 19,24" fill="#000" stroke="#fff" stroke-width="2"/>
+        </svg>
+        AI/DS Portfolio
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-anim" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+        <!-- SVG: Hand-drawn AI Brain Animation -->
+        <svg class="draw" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M160 40 Q220 60 220 120 Q260 140 240 200 Q260 260 180 280 Q120 300 80 240 Q40 200 80 160 Q60 100 120 80 Q140 40 160 40 Z"
+            stroke="#fff" stroke-width="6" fill="none"/>
+          <circle cx="160" cy="120" r="12" fill="#fff">
+            <animate attributeName="cy" values="120;140;120" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="200" cy="180" r="8" fill="#fff">
+            <animate attributeName="cy" values="180;200;180" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="120" cy="200" r="10" fill="#fff">
+            <animate attributeName="cy" values="200;220;200" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="hero-title">Hi, I'm <span>MAYANK SHARMA</span></div>
+      <div class="hero-subtitle">AI Engineer & Data Scientist<br>
+        <span style="font-size:1.1rem;color:#fff;">Building intelligent solutions with code, data, and creativity.</span>
+      </div>
+      <a href="https://b24bs1555.wixsite.com/aide-by-ms" class="btn-main" target="_blank">Let's Connect</a>
+    </section>
+
+    <section id="about">
+      <div class="section-title">About Me</div>
+      <div class="about-content">
+        <div class="about-img" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <svg class="diamond-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="32,6 58,24 32,58 6,24" fill="#fff" stroke="#fff" stroke-width="3"/>
+            <polygon points="32,6 45,24 32,58 19,24" fill="#000" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="about-text">
+          <p>
+            I AM MAYANK SHARMA, A STUDENT AT IIT JODHPUR, PURSUING BS in AIDE.<br>
+            I am quite fascinated by the number of AI tools in the market and their application.<br>
+            Find some of them here.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">Skills & Tools</div>
+      <div class="skills-list">
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Data_analysis','_blank')">DATA ANALYSIS</div>
+        <div class="skill-badge" onclick="window.open('https://www.python.org','_blank')">PYTHON</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Data_mining','_blank')">DATA MINING</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Data_cleansing','_blank')">DATA CLEANING</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Sorting','_blank')">DATA SORTING</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Data_warehouse','_blank')">DATA WAREHOUSE</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Data_analysis#Interpretation','_blank')">DATA INTERPRETATION</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Statistical_analysis','_blank')">STATISTICAL ANALYSIS</div>
+        <div class="skill-badge" onclick="window.open('https://en.wikipedia.org/wiki/Data','_blank')">EVERYTHING WITH DATA</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">Featured Projects</div>
+      <div class="projects-grid">
+        <!-- GlobalAI Tile -->
+        <div class="project-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div class="project-title" style="font-size:1.4rem;">GlobalAI</div>
+          <div class="project-desc" style="margin-bottom:1.2rem;">
+            Explore popular AI tools in the market:
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
+            <span class="skill-badge" onclick="window.open('https://chat.openai.com','_blank')">ChatGPT</span>
+            <span class="skill-badge" onclick="window.open('https://gemini.google.com','_blank')">Gemini</span>
+            <span class="skill-badge" onclick="window.open('https://bard.google.com','_blank')">Bard</span>
+            <span class="skill-badge" onclick="window.open('https://copilot.microsoft.com','_blank')">Copilot</span>
+            <span class="skill-badge" onclick="window.open('https://claude.ai','_blank')">Claude</span>
+            <span class="skill-badge" onclick="window.open('https://perplexity.ai','_blank')">Perplexity</span>
+            <span class="skill-badge" onclick="window.open('https://midjourney.com','_blank')">Midjourney</span>
+            <span class="skill-badge" onclick="window.open('https://stablediffusionweb.com','_blank')">Stable Diffusion</span>
+            <span class="skill-badge" onclick="window.open('https://huggingface.co','_blank')">Hugging Face</span>
+            <span class="skill-badge" onclick="window.open('https://runwayml.com','_blank')">RunwayML</span>
+            <span class="skill-badge" onclick="window.open('https://openai.com/research','_blank')">OpenAI Research</span>
+            <span class="skill-badge" onclick="window.open('https://www.anthropic.com','_blank')">Anthropic</span>
+            <span class="skill-badge" onclick="window.open('https://www.cohere.com','_blank')">Cohere</span>
+            <span class="skill-badge" onclick="window.open('https://www.replicate.com','_blank')">Replicate</span>
+            <span class="skill-badge" onclick="window.open('https://www.deepmind.com','_blank')">DeepMind</span>
+            <span class="skill-badge" onclick="window.open('https://www.lobe.ai','_blank')">Lobe</span>
+            <span class="skill-badge" onclick="window.open('https://www.ibm.com/watson','_blank')">IBM Watson</span>
+            <span class="skill-badge" onclick="window.open('https://www.databricks.com','_blank')">Databricks</span>
+            <span class="skill-badge" onclick="window.open('https://www.dataiku.com','_blank')">Dataiku</span>
+            <span class="skill-badge" onclick="window.open('https://www.adept.ai','_blank')">Adept</span>
+          </div>
+        </div>
+        <!-- Existing project tiles below -->
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">Smart Email Spam Detector</div>
+          <div class="project-desc">
+            Built a production-ready spam detection system using NLP, deep learning, and Gemini AI integration. Features a modern animated UI and real-time inference.
+          </div>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Gemini AI</span>
+            <span class="tag">Animation</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">3D Medical Image Classifier</div>
+          <div class="project-desc">
+            Developed a 3D CNN model for automated diagnosis from MRI scans, with interactive WebGL-based visualization for clinicians.
+          </div>
+          <div class="project-tags">
+            <span class="tag">3D Animation</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">WebGL</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">Animated Data Storytelling</div>
+          <div class="project-desc">
+            Created motion graphics and animated dashboards for business intelligence, using D3.js and isometric animation for engaging data stories.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Motion Graphics</span>
+            <span class="tag">D3.js</span>
+            <span class="tag">Isometric Animation</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">Real-Time Face Recognition</div>
+          <div class="project-desc">
+            Built a real-time face recognition system with rotoscope-style overlays and smooth scroll-triggered animations for the web interface.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Rotoscope</span>
+            <span class="tag">Scroll Animation</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">AI-Powered Chatbot Platform</div>
+          <div class="project-desc">
+            Designed and deployed a scalable chatbot platform using NLP, motion graphics, and WebGL for interactive user experiences.
+          </div>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">WebGL</span>
+            <span class="tag">Motion Graphics</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">Cut-out Animation Explainer</div>
+          <div class="project-desc">
+            Produced a cut-out animation explainer video for AI concepts, using digital 2D and stop-motion techniques for visual storytelling.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Cut-out Animation</span>
+            <span class="tag">Stop Motion</span>
+            <span class="tag">Explainer</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank')">
+          <div class="project-title">Isometric Data Visualizer</div>
+          <div class="project-desc">
+            Developed an isometric animation dashboard for real-time data visualization and analytics, with interactive charts and typography animation.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Isometric Animation</span>
+            <span class="tag">Typography Animation</span>
+            <span class="tag">Analytics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">Contact</div>
+      <form class="contact-form" autocomplete="off" onsubmit="window.open('https://b24bs1555.wixsite.com/aide-by-ms','_blank');return false;">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <div style="margin-top:1rem;text-align:center;">
+          <span style="display:inline-block;cursor:pointer;" onclick="window.open('https://instagram.com/mayyanks','_blank')">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;">
+              <rect width="32" height="32" rx="8" fill="#fff" />
+              <g>
+                <rect x="7" y="7" width="18" height="18" rx="5" stroke="#000" stroke-width="2" fill="none"/>
+                <circle cx="16" cy="16" r="5" stroke="#000" stroke-width="2" fill="none"/>
+                <circle cx="22.2" cy="9.8" r="1.2" fill="#000"/>
+              </g>
+            </svg>
+          </span>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 MAYANK SHARMA &mdash; AI Engineer & Data Scientist Portfolio
+  </footer>
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
